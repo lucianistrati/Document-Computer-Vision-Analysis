@@ -1,4 +1,3 @@
-from tqdm import tqdm
 from PyPDF2 import PdfFileWriter, PdfFileReader
 from pdf2image import convert_from_path
 from PIL import Image
@@ -8,7 +7,6 @@ import pdb
 import cv2
 import os
 
-import PIL
 
 def convert_pdf_to_images(pdf_filepath: str, img_filepath: str = "", saving_folder: str = ""):
     if pdf_filepath.endswith(".pdf") == False:
@@ -18,9 +16,10 @@ def convert_pdf_to_images(pdf_filepath: str, img_filepath: str = "", saving_fold
         img_filepath = saving_folder + img_filepath[img_filepath.rfind("/"):]
     if os.path.exists(img_filepath + "_image_0.jpeg"):
         return
+    # print(pdf_filepath)
     try:
         pages = convert_from_path(pdf_filepath, 500)
-    except (MemoryError, PIL.Image.DecompressionBombError):
+    except MemoryError, :
         return
     for i, page in enumerate(pages):
         page.save(img_filepath + f"_image_{i}.jpeg", "JPEG")
@@ -74,11 +73,12 @@ def get_text_from_image(image, preprocess=None):
 
     return text
 
+from tqdm import tqdm
 
 def main():
     pdf_filepath = "data/azure_data_for_ocr/DA_SILOZ"
     saving_filepath = "data/azure_data_for_ocr/DA_SILOZ_images"
-    for i, file in tqdm(enumerate(sorted(os.listdir(pdf_filepath)))):
+    for i, file in tqdm(enumerate(os.listdir(pdf_filepath))):
 
         # if i >= 1:
         #     break
