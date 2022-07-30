@@ -28,7 +28,7 @@ Visualization and explainability is a really important component in checking up 
 
 Utils contains common parts of code which can be used by any of the above components
 
-### Users
+# Users
 
 The target users of this functionalities are the researchers in helping them to pursue their analysis, as well as allowing its partial (or total) automatization of some processes.
 
