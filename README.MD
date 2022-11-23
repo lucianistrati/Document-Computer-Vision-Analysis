@@ -57,3 +57,5 @@ If you will encounter any errors related to importing stuff from other Python fi
 export PYTHONPATH=\`pwd\`
 ```
 Should fix any path problems.
+
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://stand-with-ukraine.pp.ua)
